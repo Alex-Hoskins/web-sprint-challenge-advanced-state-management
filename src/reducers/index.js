@@ -1,4 +1,4 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR, ADD_SMURF } from './../actions'
+import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR, ADD_SMURF,SET_ERROR } from './../actions'
 
 export const initialState = {
     smurfs:[{
@@ -9,7 +9,7 @@ export const initialState = {
         description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
     }],
     isFetching:false,
-    error:''
+    error:'hello'
 }
 
 const reducer = (state = initialState, action)=>{
@@ -35,12 +35,15 @@ const reducer = (state = initialState, action)=>{
             isFetching: false,
             error: action.payload
           })
+        case(SET_ERROR):
+          return({
+            ...state,
+            error: action.payload
+          })
         case(ADD_SMURF):
           return({
             ...state,
-            smurfs:[...state.smurfs, action.payload],
-            isFetching: false,
-            error: ''
+            smurfs:[...state.smurfs, action.payload]
           })
         default:
             return state;

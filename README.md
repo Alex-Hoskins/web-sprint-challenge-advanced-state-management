@@ -65,7 +65,7 @@ In this project, you will build the reducer, actions and basic redux connects ne
   Add in the action creators and action constants needed to add a smurf to state and fetch smurfs from the server. **If at all possible, add in action cases one at a time, instead of all at once. Test your state connects and reducer cases as nessisary.**
 
   * [x] Add a thunk action called fetchSmurfs that triggers a loading status display in our application, performs an axios call to retreive all smurfs from the api. Save the result of to our state and show an error if one is made.
-  * [ ] Add a standard action that allows us to add new smurf (including the name, nickname, position, summary).
+  * [x] Add a standard action that allows us to add new smurf (including the name, nickname, position, summary).
   * [ ] Add a standard action that allows us to set the value of the error message slice of state.
   
 ### Complete App.js
@@ -87,7 +87,7 @@ In this project, you will build the reducer, actions and basic redux connects ne
   * [ ] Connect your error state slice, setError and addSmurf actions to the AddForm component.
   * [ ] Replace all instances of the errorMessage static variable with your error message state slice. 
   * [ ] Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when validation code fails.
-  * [ ] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summury passed as arguments. Test that a smurf is correctly added to when the form is submitted.
+  * [x] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summury passed as arguments. Test that a smurf is correctly added to when the form is submitted.
 
 ## Important Notes:
 

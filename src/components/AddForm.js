@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import { addSmurf } from './../actions';
+import { addSmurf, setError } from './../actions';
 import { connect } from 'react-redux';
 
 const AddForm = (props) => {
-    console.log(props)
     const [state, setState] = useState({
         name:"",
         position:"",
         nickname:"",
         description:"",
-        id:Date.now()
+        id: Math.random()
     });
 
     //remove when error state is added
-    const errorMessage = "";
+   
 
     const handleChange = e => {
         setState({
@@ -25,10 +24,17 @@ const AddForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            //add in error action
+            props.dispatch(setError('Please complete all fields.'));
         }
         else{
             props.dispatch(addSmurf(state));
+            setState({
+                name:"",
+                position:"",
+                nickname:"",
+                description:"",
+                id: Math.random()
+            })
         }
     }
 
@@ -52,7 +58,7 @@ const AddForm = (props) => {
                 <textarea onChange={handleChange} value={state.description} name="description" id="description" />
             </div>
             {
-                errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {errorMessage}</div>
+                props.error && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {props.error}</div>
             }
             <button>Submit Smurf</button>
         </form>

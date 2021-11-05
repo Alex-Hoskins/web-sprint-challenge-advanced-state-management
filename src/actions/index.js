@@ -3,6 +3,7 @@ import axios from 'axios';
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_ERROR = "FETCH_ERROR";
+export const SET_ERROR = "SET_ERROR";
 export const ADD_SMURF = "ADD_SMURF";
 
 export const fetchStart = () => {
@@ -15,6 +16,10 @@ export const fetchSuccess = (smurfs)=> {
 
 export const fetchError = (errorMessage)=> {
     return({type: FETCH_ERROR, payload:errorMessage});
+}
+
+export const setError = (errorMessage)=> {
+    return({type: SET_ERROR, payload:errorMessage});
 }
 export const addSmurf = (newSmurf)=> {
     return({type: ADD_SMURF, payload:newSmurf});
