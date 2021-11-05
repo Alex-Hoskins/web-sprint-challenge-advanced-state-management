@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import { addSmurf, setError } from './../actions';
+import { addSmurf, setError, newSmurf } from './../actions';
 import { connect } from 'react-redux';
 
 const AddForm = (props) => {
     const [state, setState] = useState({
+        id: Math.random(),
         name:"",
         position:"",
         nickname:"",
-        description:"",
-        id: Math.random()
-    });
-
-    //remove when error state is added
-   
+        description:""
+    });   
 
     const handleChange = e => {
         setState({
@@ -27,13 +24,13 @@ const AddForm = (props) => {
             props.dispatch(setError('Please complete all fields.'));
         }
         else{
-            props.dispatch(addSmurf(state));
+            props.dispatch(newSmurf(props.dispatch,state));
             setState({
+                id: Math.random(),
                 name:"",
                 position:"",
                 nickname:"",
-                description:"",
-                id: Math.random()
+                description:""
             })
         }
     }
@@ -65,7 +62,6 @@ const AddForm = (props) => {
     </section>);
 }
 const mapStateToProps=state=>{
-    console.log('state fro mstp', state)
     return{
         smurfs: state.smurfs,
         isFetching: state.isFetching,
